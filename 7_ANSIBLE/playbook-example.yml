@@ -1,0 +1,16 @@
+---
+- name: Example playbook for localhost
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Ensure we can ping localhost
+      ansible.builtin.ping:
+
+    - name: Create a file called /tmp/ansible-example.txt
+      ansible.builtin.copy:
+        dest: /tmp/ansible-example.txt
+        content: "This file was created by Ansible example playbook.\n"
+        mode: '0644'
+
+# Run with: ansible-playbook playbook-example.yml

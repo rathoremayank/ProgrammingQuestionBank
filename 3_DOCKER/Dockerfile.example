@@ -1,0 +1,13 @@
+# Minimal Dockerfile example
+# Uses the official nginx image and copies a simple index.html
+FROM nginx:stable-alpine
+
+# Copy a custom index.html if present
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Default command is provided by base image
+# To build: docker build -t my-nginx:example .
+# To run: docker run --rm -p 8080:80 my-nginx:example

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+	name: example-nginx-ingress
+	annotations:
+		kubernetes.io/ingress.class: "nginx"
+	labels:
+		app: example-nginx
+spec:
+	rules:
+		- http:
+				paths:
+					- path: /
+						pathType: Prefix
+						backend:
+							service:
+								name: example-nginx-service
+								port:
+									number: 80
+
+	# To enable TLS, add a tls: section with a secretName containing certs
+

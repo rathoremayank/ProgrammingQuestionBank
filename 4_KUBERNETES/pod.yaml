@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+	name: example-nginx-pod
+	labels:
+		app: example-nginx
+spec:
+	containers:
+		- name: nginx
+			image: nginx:stable-alpine
+			ports:
+				- containerPort: 80
+			env:
+				- name: EXAMPLE_USER
+					valueFrom:
+						secretKeyRef:
+							name: example-secret
+							key: username
+			volumeMounts:
+				- name: web-content
+					mountPath: /usr/share/nginx/html/index.html
+					subPath: index.html
+	volumes:
+		- name: web-content
+			configMap:
+				name: example-config
+

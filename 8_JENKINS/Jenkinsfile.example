@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Clone') {
+      steps {
+        echo 'Cloning... (Jenkins would checkout here)'
+      }
+    }
+    stage('Build') {
+      steps {
+        echo 'Building...'
+      }
+    }
+    stage('Test') {
+      steps {
+        echo 'Testing...'
+      }
+    }
+  }
+
+  post {
+    always {
+      echo 'Pipeline finished.'
+    }
+  }
+}

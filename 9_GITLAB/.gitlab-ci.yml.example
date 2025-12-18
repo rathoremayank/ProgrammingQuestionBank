@@ -1,0 +1,20 @@
+stages:
+  - build
+  - test
+
+variables:
+  GIT_SUBMODULE_STRATEGY: none
+
+build-job:
+  stage: build
+  image: alpine:3.18
+  script:
+    - echo "Building project..."
+
+test-job:
+  stage: test
+  image: alpine:3.18
+  script:
+    - echo "Running tests..."
+    - echo "No tests configured; replace with your test command"
+  when: on_success

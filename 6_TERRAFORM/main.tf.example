@@ -1,0 +1,19 @@
+# Minimal Terraform example using null_resource for local demonstration
+terraform {
+  required_version = ">= 1.0"
+}
+
+provider "local" {
+  # local provider doesn't require configuration
+}
+
+resource "null_resource" "example" {
+  provisioner "local-exec" {
+    command = "echo Hello from Terraform null_resource"
+  }
+}
+
+# To run (for learning):
+# terraform init
+# terraform apply
+# terraform destroy
